@@ -1,2 +1,0 @@
-# SimplePrototypes
-UnityPrototypes
