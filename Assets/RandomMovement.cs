@@ -10,7 +10,9 @@ public class RandomMovement : MonoBehaviour {
 	private RaycastHit hit;
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating("IncreaseDifficulty", 3f, 3f);
+		if (this.gameObject.tag != "Roach") {
+			InvokeRepeating("IncreaseDifficulty", 3f, 3f);
+		}
 	}
 
 	void IncreaseDifficulty() {
@@ -27,9 +29,9 @@ public class RandomMovement : MonoBehaviour {
 		transform.Translate (new Vector3 (0, 0, 2) * speed * Time.deltaTime);
 		randomFloat = Random.Range (0, 360);
 		fwd = transform.TransformDirection (Vector3.forward);
-		Debug.DrawRay (transform.position, fwd * 3, Color.red);
+		Debug.DrawRay (transform.position, fwd * 1, Color.red);
 
-		if (Physics.Raycast(transform.position,fwd, out hit, 3f)) {
+		if (Physics.Raycast(transform.position,fwd, out hit, 1f)) {
 			if (hit.collider.tag == "Wall") {
 				transform.Rotate (0, randomFloat, 0);
 			} 
